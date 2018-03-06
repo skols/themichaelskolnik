@@ -1,5 +1,5 @@
 baseURL = "http://www.therealmichaelskolnik.com/"
-title = "Hi, I'm Mike"
+title = "Hi, I'm Mike the data guy"
 
 # Copyright
 copyright = "(c) 2018 Michael Skolnik"
@@ -63,7 +63,7 @@ paginatePath = "page"
     linkedin = "mikeskolnik" # Your LinkedIn profile ID (from public URL)
     googleplus = "" # Your Google+ profile ID
     facebook = "" # Your Facebook profile ID
-    twitter = "" # Your Twitter profile ID
+    twitter = "mikeskolnik75" # Your Twitter profile ID
     youtube = ""  # Your Youtube channel ID
     flattr = ""  # populate with your flattr uid
     flickr = "" # Your Flickr profile ID
