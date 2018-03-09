@@ -1,7 +1,7 @@
 ---
 {
-  "title": "Data visualization in Python of recent work",
-  "subtitle": "Some Python data visualization examples of what I had done in my most recent job",
+  "title": "Data visualization in Python from my most recent job",
+  "subtitle": "Some data visualization examples in Python of what I had done in my most recent job",
   "date": "2018-03-08",
   "slug": "previous-python-chart"
 }
@@ -59,3 +59,4 @@ Field4 = [1347, 20959, 111403, 809883, 0]
 Field5 = [4508887, 315049, 371894, 4235, 2766]
 ```
 
+Metadata change
