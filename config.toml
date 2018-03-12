@@ -1,4 +1,4 @@
-baseURL = "http://www.therealmichaelskolnik.com/"
+baseURL = "http://www.themichaelskolnik.com/"
 title = "Hi, I'm Mike the data guy"
 
 # Copyright
@@ -30,8 +30,8 @@ paginatePath = "page"
     topic = "topics"
 
 [author]
-    name = "yourname"
-    email = "yourname@example.com"
+    name = "Mike"
+    email = "mikeskolnik75@gmail.com"
 
 #
 # All parameters below here are optional and can be mixed and matched.

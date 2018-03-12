@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Using Python to import multiple Excel files and export as one text file  &middot; Hi, I&#39;m Mike the data guy</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Using Python to import multiple Excel files and export as one text file  &middot; Hi, I&#39;m Mike the data guy ">
+<meta property="og:site_name" content="Hi, I&#39;m Mike the data guy"/>
+<meta property="og:url" content="http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-03-12T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-03-12T00:00:00Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@mikeskolnik75" />
+<meta name="twitter:creator" content="@mikeskolnik75" />
+<meta name="twitter:title" content="Using Python to import multiple Excel files and export as one text file" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/" />
+<meta name="twitter:domain" content="http://www.themichaelskolnik.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Using Python to import multiple Excel files and export as one text file",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-03-12",
+    "description": "",
+    "wordCount": 685
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.themichaelskolnik.com/touch-icon-144-precomposed.png">
+<link href="http://www.themichaelskolnik.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.36" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://www.themichaelskolnik.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://www.themichaelskolnik.com/css/style.css">
+<link rel="stylesheet" href="http://www.themichaelskolnik.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'Your Google Analytics tracking code', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://www.themichaelskolnik.com/">
+  Analysis, Visualizations, and Coding
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Data guy with SQL, Python, and R skills looking for a full-time or freelance remote position
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://www.themichaelskolnik.com/">Home</a>
+
+
+  
+<a href="http://www.themichaelskolnik.com/about/">About Me</a>
+
+<a href="http://www.themichaelskolnik.com/post/" title="Show list of posts">Posts</a>
+
+<a href="http://www.themichaelskolnik.com/resume/">Resume</a>
+
+<a href="http://www.themichaelskolnik.com/tags/" title="Show list of tags">Tags</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:mikeskolnik75@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/skols">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/mikeskolnik">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+<a id="contact-link-twitter" class="contact_link" href="https://twitter.com/mikeskolnik75">
+  <span class="fa fa-twitter-square"></span><span>twitter</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Using Python to import multiple Excel files and export as one text file
+</h1>
+
+  <div class="metas">
+<time datetime="2018-03-12">12 Mar, 2018</time>
+
+
+  
+  &middot; Read in about 4 min
+  &middot; (685 Words)
+  <br>
+  
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p></p>
+
+<h3 id="how-i-imported-many-excel-files-into-python-and-then-exported-one-text-file">How I imported many Excel files into Python and then exported one text file</h3>
+
+<p>At my previous job, some clients for projects provided 90 to 100 Excel files that I needed to import into SQL Server or somewhere else. To do that I wanted to create one text file that could be imported into something else. In this case it required a little more work because the files had dates and times in their names but the date wasn&rsquo;t in the data. I wanted to keep the date though, so I added a field for each file that contained the date and time part of the filename. I thought Python would be good for everything I wanted to do and it was. Here&rsquo;s what I did.</p>
+
+<p>First I imported the necessary libraries.</p>
+
+<pre><code class="language-python"># Imports
+import os
+import pandas as pd
+import glob
+</code></pre>
+
+<p>Then I changed to the directory that contained the workbooks and put all of the filenames in a list.</p>
+
+<pre><code class="language-python"># Change directory
+os.chdir(&quot;E:/Data/Client1/Excel Files&quot;)
+
+# Create a list with all the files
+path = os.getcwd()
+files = os.listdir(path)
+</code></pre>
+
+<p>I used list comprehension to get all the Excel workbooks. I could have used glob but wanted to use list comprehension for practice</p>
+
+<pre><code class="language-python"># Select only xlsx files
+files_xlsx = [f for f in files if f[-4:] == &quot;xlsx&quot;]
+</code></pre>
+
+<p>I initialized an empty dataframe then imported the into the dataframe. I added the date and time as a field in this step, also replacing spaces and symbols in the column names. Then I exported each as a pipe delimited text file, with the filename being the date and time and the text files having no header or index.</p>
+
+<pre><code class="language-python"># Initialize empty dataframe
+df = pd.DataFrame()
+
+# Loop over list of Excel files, import into dataframe, add date field, and export
+for f in files_xlsx:
+    df = pd.read_excel(f, skiprows=4, skipfooter=3)
+    # Add the date and time as a field
+    df['file'] = f[-15:-5]
+    # Replace spaces and symbols in column names
+    df.columns = [c.replace(' ', '_') for c in df.columns]
+    df.columns = [c.replace('#', '') for c in df.columns]
+    col_names = df.columns
+    # Export each as a text file
+    df.to_csv(f[-15:-5]+&quot;.txt&quot;, sep=&quot;|&quot;, index=None, header=None)
+</code></pre>
+
+<p>I used glob to put the names of all the text files in a list.</p>
+
+<pre><code class="language-python"># Get the .txt files
+files_txt = glob.glob(&quot;*.txt&quot;)
+</code></pre>
+
+<p>I initialized a new dataframe to hold all the data as well as an empty list.</p>
+
+<pre><code class="language-python"># Initialize the dataframe to hold all the data
+df_full = pd.DataFrame()
+
+# Initialize an empty list
+df_list = []
+</code></pre>
+
+<p>Then I imported the files from file_txt, appending the data to the list. Then I added the data in the list to the dataframe using the pandas concat function.</p>
+
+<pre><code class="language-python"># Loop over list of text files and import the data, then append the data to a list
+for f in files_txt:
+    data = pd.read_csv(f, sep=&quot;|&quot;, header=None)
+    df_list.append(data)
+
+# Add the data from the list to the dataframe for the full data set
+df_full = pd.concat(df_list, axis=0)
+</code></pre>
+
+<p>Since column names aren&rsquo;t in the text files, I created a list that has them and then added those (the names have been changed except for file; that&rsquo;s the one I added based on the Excel filename).</p>
+
+<pre><code class="language-python"># Create the list with the column names
+col_names_full = ['Field1', 'Field2', 'Field3', 'Field4', 'Field5',
+                  'Field6', 'Field7', 'Field8', 'Field9', 'Field10',
+                  'Field11', 'Field12', 'Field13', 'file']
+
+# Add the column names to the dataframe
+df_full.columns = col_names_full
+</code></pre>
+
+<p>Field4 has some NaN values that need to be replaced</p>
+
+<pre><code class="language-python"># Replace NaN in Field4 with &quot;None&quot;
+df_full[&quot;Field4&quot;] = df_full.Field4.fillna(&quot;None&quot;)
+</code></pre>
+
+<p>I created a dataframe that only contained a specific value from Field4, RSV.</p>
+
+<pre><code class="language-python"># Create RSV only dataframe
+df_RSV = df_full[df_full.Field4 == &quot;RSV&quot;]
+</code></pre>
+
+<p>I created two outfile variables, one for the full dataframe and one for the RSV data only. Then I exported both as text delimited files.</p>
+
+<pre><code class="language-python"># Outfile for RSV only
+outfile_RSV = &quot;Data_RSV_20180312.txt&quot;
+
+# Outfile for all data
+outfile_full = &quot;Data_All_20180312.txt&quot;
+
+# Export RSV as pipe delimited text
+df_RSV.to_csv(outfile_RSV, sep=&quot;|&quot;, index=None)
+
+# Export full as pipe delimited text
+df_full.to_csv(outfile_full, sep=&quot;|&quot;, index=None)
+</code></pre>
+
+<p>This produced two clean pipe delimited text files that could easily be imported elsewhere.</p>
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 Michael Skolnik
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+
+<script src="http://www.themichaelskolnik.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+
