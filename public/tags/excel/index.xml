@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Hi, I&#39;m Mike the data guy</title>
-    <link>https://themichaelskolnik.com/post/</link>
-    <description>Recent content in Posts on Hi, I&#39;m Mike the data guy</description>
+    <title>Excel on Hi, I&#39;m Mike the data guy</title>
+    <link>https://themichaelskolnik.com/tags/excel/</link>
+    <description>Recent content in Excel on Hi, I&#39;m Mike the data guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2018 Michael Skolnik</copyright>
     <lastBuildDate>Mon, 12 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://themichaelskolnik.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://themichaelskolnik.com/tags/excel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

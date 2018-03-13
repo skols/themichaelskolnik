@@ -3,39 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</loc>
+    <loc>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</loc>
     <lastmod>2018-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/resume/</loc>
+    <loc>https://themichaelskolnik.com/resume/</loc>
     <lastmod>2018-02-17T07:53:16-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/about/</loc>
+    <loc>https://themichaelskolnik.com/about/</loc>
     <lastmod>2018-02-17T07:26:19-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/</loc>
+    <loc>https://themichaelskolnik.com/tags/excel/</loc>
     <lastmod>2018-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/post/</loc>
+    <loc>https://themichaelskolnik.com/</loc>
     <lastmod>2018-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/tags/</loc>
+    <loc>https://themichaelskolnik.com/post/</loc>
+    <lastmod>2018-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.themichaelskolnik.com/topics/</loc>
+    <loc>https://themichaelskolnik.com/tags/python/</loc>
+    <lastmod>2018-03-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://themichaelskolnik.com/tags/</loc>
+    <lastmod>2018-03-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://themichaelskolnik.com/topics/</loc>
     <priority>0</priority>
   </url>
   

@@ -1,17 +1,19 @@
 [about]
     Name = "About Me"
+    Title = "About Me"
     URL = "/about/"
 
 [resume]
     Name = "Resume"
+    Title = "My resume"
     URL = "/resume/"
 
 [posts]
     Name = "Posts"
-    Title = "Show list of posts"
+    Title = "Shows a list of posts"
     URL = "/post/"
 
 [tags]
     Name = "Tags"
-    Title = "Show list of tags"
+    Title = "Shows a list of tags"
     URL = "/tags/"

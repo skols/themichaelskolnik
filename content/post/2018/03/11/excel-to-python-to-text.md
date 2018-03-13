@@ -3,7 +3,8 @@
   "title": "Using Python to import multiple Excel files and export as one text file",
   "subtitle": "How I imported many Excel files into Python and then exported one text file",
   "date": "2018-03-12",
-  "slug": "excel-to-python-to-text"
+  "slug": "excel-to-python-to-text",
+  "tags": ["Python", "Excel"]
 }
 ---
 <!--more-->

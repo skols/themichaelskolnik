@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hi, I&#39;m Mike the data guy</title>
-    <link>http://www.themichaelskolnik.com/</link>
+    <link>https://themichaelskolnik.com/</link>
     <description>Recent content on Hi, I&#39;m Mike the data guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
@@ -11,34 +11,34 @@
     <copyright>(c) 2018 Michael Skolnik</copyright>
     <lastBuildDate>Mon, 12 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.themichaelskolnik.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://themichaelskolnik.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using Python to import multiple Excel files and export as one text file</title>
-      <link>http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</link>
+      <link>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</link>
       <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>http://www.themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</guid>
+      <guid>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Resume</title>
-      <link>http://www.themichaelskolnik.com/resume/</link>
+      <link>https://themichaelskolnik.com/resume/</link>
       <pubDate>Sat, 17 Feb 2018 07:53:16 -0500</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>http://www.themichaelskolnik.com/resume/</guid>
+      <guid>https://themichaelskolnik.com/resume/</guid>
       <description>Summary A results-driven and highly knowledgeable business analysis professional with extensive experience in data analysis, database management, website development, modeling software, data scrubbing, and performance management. Hardworking and goal-oriented, makes solid decisions to improve production significantly. Troubleshoots issues to increase customer satisfaction while providing clients with up-to-date information. Demonstrates strong leadership and collaborative skills to deliver exceptional results consistently.
 Objective To work for a remote-friendly company in an analytical role to provide insights to my employer about their data using SQL, Python, R, Excel, Power BI, and more.</description>
     </item>
     
     <item>
       <title>About Me</title>
-      <link>http://www.themichaelskolnik.com/about/</link>
+      <link>https://themichaelskolnik.com/about/</link>
       <pubDate>Sat, 17 Feb 2018 07:26:19 -0500</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>http://www.themichaelskolnik.com/about/</guid>
+      <guid>https://themichaelskolnik.com/about/</guid>
       <description>Hi! My name is Mike Skolnik and I like cooking, coding, and spending time with my dog Luna.
 I am a data scientist with SQL, Python, R, Tableau, and Power BI skills who loves working with data and finding patterns in data. I also like experimenting with new tools to see if they would be beneficial to do any data analysis or visualizations. I love learning new things and then applying that new knowledge to my work as well.</description>
     </item>
