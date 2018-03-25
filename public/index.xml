@@ -9,10 +9,19 @@
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
     <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
     <copyright>(c) 2018 Michael Skolnik</copyright>
-    <lastBuildDate>Mon, 12 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://themichaelskolnik.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series</title>
+      <link>https://themichaelskolnik.com/2018/03/25/home-prices-python/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/2018/03/25/home-prices-python/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Using Python to import multiple Excel files and export as one text file</title>

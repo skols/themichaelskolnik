@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Hi, I&#39;m Mike the data guy</title>
-    <link>https://themichaelskolnik.com/tags/python/</link>
-    <description>Recent content in Python on Hi, I&#39;m Mike the data guy</description>
+    <title>Machine Learning on Hi, I&#39;m Mike the data guy</title>
+    <link>https://themichaelskolnik.com/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Hi, I&#39;m Mike the data guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2018 Michael Skolnik</copyright>
     <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://themichaelskolnik.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://themichaelskolnik.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
       <guid>https://themichaelskolnik.com/2018/03/25/home-prices-python/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using Python to import multiple Excel files and export as one text file</title>
-      <link>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</link>
-      <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
-      <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     

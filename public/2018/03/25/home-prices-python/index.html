@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series  &middot; Hi, I&#39;m Mike the data guy</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="Python, machine learning, ">
+
+
+<meta property="og:title" content="My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series  &middot; Hi, I&#39;m Mike the data guy ">
+<meta property="og:site_name" content="Hi, I&#39;m Mike the data guy"/>
+<meta property="og:url" content="https://themichaelskolnik.com/2018/03/25/home-prices-python/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-03-25T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-03-25T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="Python">
+    
+<meta property="og:article:tag" content="machine learning">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@mikeskolnik75" />
+<meta name="twitter:creator" content="@mikeskolnik75" />
+<meta name="twitter:title" content="My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://themichaelskolnik.com/2018/03/25/home-prices-python/" />
+<meta name="twitter:domain" content="https://themichaelskolnik.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-03-25",
+    "description": "",
+    "wordCount": 1642
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://themichaelskolnik.com/2018/03/25/home-prices-python/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://themichaelskolnik.com/touch-icon-144-precomposed.png">
+<link href="https://themichaelskolnik.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.36" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/style.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'Your Google Analytics tracking code', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://themichaelskolnik.com/">
+  Analysis, Visualizations, and Coding
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Data guy with SQL, Python, and R skills looking for a full-time or freelance remote position
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://themichaelskolnik.com/">Home</a>
+
+
+  
+<a href="https://themichaelskolnik.com/about/" title="About Me">About Me</a>
+
+<a href="https://themichaelskolnik.com/post/" title="Shows a list of posts">Posts</a>
+
+<a href="https://themichaelskolnik.com/resume/" title="My resume">Resume</a>
+
+<a href="https://themichaelskolnik.com/tags/" title="Shows a list of tags">Tags</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:mikeskolnik75@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/skols">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/mikeskolnik">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+<a id="contact-link-twitter" class="contact_link" href="https://twitter.com/mikeskolnik75">
+  <span class="fa fa-twitter-square"></span><span>twitter</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>My code from the exercises of Level 1 of Kaggle&#39;s Learn Maching Learning series
+</h1>
+
+  <div class="metas">
+<time datetime="2018-03-25">25 Mar, 2018</time>
+
+
+  
+  &middot; Read in about 8 min
+  &middot; (1642 Words)
+  <br>
+  
+<a class="label" href="https://themichaelskolnik.com/tags/python">Python</a>
+
+<a class="label" href="https://themichaelskolnik.com/tags/machine-learning">machine learning</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p></p>
+
+<h2 id="level-1-learn-maching-learning-series-on-kaggle">Level 1 <em>Learn Maching Learning</em> series on Kaggle</h2>
+
+<p>I went through the level 1 <em>Learn Machine Learning</em> series on Kaggle using Python (<a href="https://www.kaggle.com/learn/machine-learning">https://www.kaggle.com/learn/machine-learning</a>). The data used is from the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques"><em>Home Prices: Advanced Regression Techniques</em></a> competition.</p>
+
+<p>This post will show the section name, my code from the corresponding section for the instructions under <strong>Your Turn</strong>, and some brief notes on what is taught in each section. You should go to the links to learn and also do yourself as I found this very helpful. Even if you&rsquo;ve taken other machine learning courses as I have, this is a good refresher.</p>
+
+<h3 id="section-2">Section 2</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/starting-your-ml-project">Starting Your ML Project</a></p>
+
+<p>This section has you load the data and set up the computing environment for the project. You also view summary statistics and columns.</p>
+
+<pre><code class="language-python"># Import the pandas library
+import pandas as pd
+</code></pre>
+
+<pre><code class="language-python"># Save filepath to variable
+training_data_filepath = &quot;C:/Development/Kaggle/House Prices - Advanced \
+Regression Techniques/train.csv&quot;
+
+# Read the data and store in a dataframe called training_set
+training_set = pd.read_csv(training_data_filepath)
+
+# Print a summary of the data in training_set
+print(training_set.describe())
+</code></pre>
+
+<pre><code>                Id   MSSubClass  LotFrontage        LotArea  OverallQual  \
+count  1460.000000  1460.000000  1201.000000    1460.000000  1460.000000   
+mean    730.500000    56.897260    70.049958   10516.828082     6.099315   
+std     421.610009    42.300571    24.284752    9981.264932     1.382997   
+min       1.000000    20.000000    21.000000    1300.000000     1.000000   
+25%     365.750000    20.000000    59.000000    7553.500000     5.000000   
+50%     730.500000    50.000000    69.000000    9478.500000     6.000000   
+75%    1095.250000    70.000000    80.000000   11601.500000     7.000000   
+max    1460.000000   190.000000   313.000000  215245.000000    10.000000   
+
+       OverallCond    YearBuilt  YearRemodAdd   MasVnrArea   BsmtFinSF1  \
+count  1460.000000  1460.000000   1460.000000  1452.000000  1460.000000   
+mean      5.575342  1971.267808   1984.865753   103.685262   443.639726   
+std       1.112799    30.202904     20.645407   181.066207   456.098091   
+min       1.000000  1872.000000   1950.000000     0.000000     0.000000   
+25%       5.000000  1954.000000   1967.000000     0.000000     0.000000   
+50%       5.000000  1973.000000   1994.000000     0.000000   383.500000   
+75%       6.000000  2000.000000   2004.000000   166.000000   712.250000   
+max       9.000000  2010.000000   2010.000000  1600.000000  5644.000000   
+
+           ...         WoodDeckSF  OpenPorchSF  EnclosedPorch    3SsnPorch  \
+count      ...        1460.000000  1460.000000    1460.000000  1460.000000   
+mean       ...          94.244521    46.660274      21.954110     3.409589   
+std        ...         125.338794    66.256028      61.119149    29.317331   
+min        ...           0.000000     0.000000       0.000000     0.000000   
+25%        ...           0.000000     0.000000       0.000000     0.000000   
+50%        ...           0.000000    25.000000       0.000000     0.000000   
+75%        ...         168.000000    68.000000       0.000000     0.000000   
+max        ...         857.000000   547.000000     552.000000   508.000000   
+
+       ScreenPorch     PoolArea       MiscVal       MoSold       YrSold  \
+count  1460.000000  1460.000000   1460.000000  1460.000000  1460.000000   
+mean     15.060959     2.758904     43.489041     6.321918  2007.815753   
+std      55.757415    40.177307    496.123024     2.703626     1.328095   
+min       0.000000     0.000000      0.000000     1.000000  2006.000000   
+25%       0.000000     0.000000      0.000000     5.000000  2007.000000   
+50%       0.000000     0.000000      0.000000     6.000000  2008.000000   
+75%       0.000000     0.000000      0.000000     8.000000  2009.000000   
+max     480.000000   738.000000  15500.000000    12.000000  2010.000000   
+
+           SalePrice  
+count    1460.000000  
+mean   180921.195890  
+std     79442.502883  
+min     34900.000000  
+25%    129975.000000  
+50%    163000.000000  
+75%    214000.000000  
+max    755000.000000  
+
+[8 rows x 38 columns]
+</code></pre>
+
+<pre><code class="language-python"># Print the columns in training_set
+print(training_set.columns)
+</code></pre>
+
+<pre><code>Index(['Id', 'MSSubClass', 'MSZoning', 'LotFrontage', 'LotArea', 'Street',
+       'Alley', 'LotShape', 'LandContour', 'Utilities', 'LotConfig',
+       'LandSlope', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType',
+       'HouseStyle', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd',
+       'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType',
+       'MasVnrArea', 'ExterQual', 'ExterCond', 'Foundation', 'BsmtQual',
+       'BsmtCond', 'BsmtExposure', 'BsmtFinType1', 'BsmtFinSF1',
+       'BsmtFinType2', 'BsmtFinSF2', 'BsmtUnfSF', 'TotalBsmtSF', 'Heating',
+       'HeatingQC', 'CentralAir', 'Electrical', '1stFlrSF', '2ndFlrSF',
+       'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'FullBath',
+       'HalfBath', 'BedroomAbvGr', 'KitchenAbvGr', 'KitchenQual',
+       'TotRmsAbvGrd', 'Functional', 'Fireplaces', 'FireplaceQu', 'GarageType',
+       'GarageYrBlt', 'GarageFinish', 'GarageCars', 'GarageArea', 'GarageQual',
+       'GarageCond', 'PavedDrive', 'WoodDeckSF', 'OpenPorchSF',
+       'EnclosedPorch', '3SsnPorch', 'ScreenPorch', 'PoolArea', 'PoolQC',
+       'Fence', 'MiscFeature', 'MiscVal', 'MoSold', 'YrSold', 'SaleType',
+       'SaleCondition', 'SalePrice'],
+      dtype='object')
+</code></pre>
+
+<h3 id="section-3">Section 3</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/selecting-and-filtering-in-pandas">Selecting and Filtering in Pandas</a></p>
+
+<p>This section has you use pandas to select the data you want to use, which allows you to get the data ready for modeling.</p>
+
+<pre><code class="language-python"># Store the series of prices separately as training_price_data
+training_price_data = training_set.SalePrice
+
+# Print the first 5 records
+print(training_price_data.head())
+</code></pre>
+
+<pre><code>0    208500
+1    181500
+2    223500
+3    140000
+4    250000
+Name: SalePrice, dtype: int64
+</code></pre>
+
+<pre><code class="language-python"># Create a list with the columns I am interested in
+columns_of_interest = [&quot;LotArea&quot;, &quot;YearBuilt&quot;]
+
+# Create a dataframe with just those columns
+training_two_columns = training_set[columns_of_interest]
+
+# Print a summary of the training_two_columns dataframe
+print(training_two_columns.describe())
+</code></pre>
+
+<pre><code>             LotArea    YearBuilt
+count    1460.000000  1460.000000
+mean    10516.828082  1971.267808
+std      9981.264932    30.202904
+min      1300.000000  1872.000000
+25%      7553.500000  1954.000000
+50%      9478.500000  1973.000000
+75%     11601.500000  2000.000000
+max    215245.000000  2010.000000
+</code></pre>
+
+<h3 id="section-4">Section 4</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/your-first-scikit-learn-model">Your First Scikit-Learn Model</a></p>
+
+<p>Building your first model! Spoiler: it&rsquo;s a Decision Tree model. :-)</p>
+
+<pre><code class="language-python"># Select the target variable and call it y
+y = training_set.SalePrice
+</code></pre>
+
+<pre><code class="language-python"># Create a list of the predictor variables
+predictors = [&quot;LotArea&quot;, &quot;YearBuilt&quot;, &quot;1stFlrSF&quot;, &quot;2ndFlrSF&quot;, &quot;FullBath&quot;,
+              &quot;BedroomAbvGr&quot;, &quot;TotRmsAbvGrd&quot;]
+
+# Create a new dataframe with the predictors list
+X = training_set[predictors]
+</code></pre>
+
+<pre><code class="language-python"># Import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor
+
+# Define the first model
+tree_model = DecisionTreeRegressor()
+
+# Fit model
+tree_model.fit(X, y)
+</code></pre>
+
+<pre><code>DecisionTreeRegressor(criterion='mse', max_depth=None, max_features=None,
+           max_leaf_nodes=None, min_impurity_decrease=0.0,
+           min_impurity_split=None, min_samples_leaf=1,
+           min_samples_split=2, min_weight_fraction_leaf=0.0,
+           presort=False, random_state=None, splitter='best')
+</code></pre>
+
+<pre><code class="language-python"># Make some predictions
+print(&quot;Making predictions for the first 10 houses&quot;)
+print(X.head(n=10))
+print(&quot;The predictions are:&quot;)
+print(tree_model.predict(X.head(n=10)))
+</code></pre>
+
+<pre><code>Making predictions for the first 10 houses
+   LotArea  YearBuilt  1stFlrSF  2ndFlrSF  FullBath  BedroomAbvGr  \
+0     8450       2003       856       854         2             3   
+1     9600       1976      1262         0         2             3   
+2    11250       2001       920       866         2             3   
+3     9550       1915       961       756         1             3   
+4    14260       2000      1145      1053         2             4   
+5    14115       1993       796       566         1             1   
+6    10084       2004      1694         0         2             3   
+7    10382       1973      1107       983         2             3   
+8     6120       1931      1022       752         2             2   
+9     7420       1939      1077         0         1             2   
+
+   TotRmsAbvGrd  
+0             8  
+1             6  
+2             6  
+3             7  
+4             9  
+5             5  
+6             7  
+7             7  
+8             8  
+9             5  
+The predictions are:
+[208500. 181500. 223500. 140000. 250000. 143000. 307000. 200000. 129900.
+ 118000.]
+</code></pre>
+
+<h3 id="section-5">Section 5</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/model-validation">Model Validation</a></p>
+
+<p>This section introduces model validation to measure the performance of the model. You also learn about &laquo;in-sample&raquo; scores and why you should split your data into training and test sets.</p>
+
+<pre><code class="language-python">from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+
+# Split data into training and validation data, for both predictors and
+# target.
+# The split is based on a random number generator. Supplying a numeric value
+# to the random_state argument guarantees we get the same split every time we
+# run this script. It can be any number; I'm choosing 42.
+X_train, X_val, y_train, y_val = train_test_split(X, y, random_state=42)
+
+# Define the model
+tree_model = DecisionTreeRegressor()
+
+# Fit model
+tree_model.fit(X_train, y_train)
+
+# Get predicted prices on validation data
+predictions_val = tree_model.predict(X_val)
+print(mean_absolute_error(y_val, predictions_val))
+</code></pre>
+
+<pre><code>30855.94794520548
+</code></pre>
+
+<h3 id="section-6">Section 6</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/underfitting-overfitting-and-model-optimization">Underfitting, Overfitting, and Model Optimization</a></p>
+
+<p>In this section you learn about underfitting, overfitting, and optimizing your model. The <em>max_leaf_nodes</em> argument is used to provide a very sensible way to control overfitting vs underfitting in Decision Tree models.</p>
+
+<pre><code class="language-python"># Create a utility function to help compare MAE scores from differevalues for
+# *max_leaf_nodes*.
+def get_mae(max_leaf_nodes, predictors_train, val_predictors, targ_train,
+            targ_val):
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes,
+                                  random_state=42)
+    model.fit(predictors_train, targ_train)
+    preds_val = model.predict(val_predictors)
+    mae = mean_absolute_error(targ_val, preds_val)
+    return(mae)
+</code></pre>
+
+<pre><code class="language-python"># Loop through a list of max leaf nodes and print the MAE of each
+for max_leaf_nodes in [5, 10, 25, 50, 100, 200, 500, 1000, 5000]:
+    my_mae = get_mae(max_leaf_nodes, X_train, X_val, y_train, y_val)
+    print(&quot;Max leaf nodes: {0} \t\t Mean Absolute Error: {1}&quot;.
+          format(max_leaf_nodes, my_mae))
+</code></pre>
+
+<pre><code>Max leaf nodes: 5        Mean Absolute Error: 35244.94032482636
+Max leaf nodes: 10       Mean Absolute Error: 31256.15612179911
+Max leaf nodes: 25       Mean Absolute Error: 29611.012298361497
+Max leaf nodes: 50       Mean Absolute Error: 27232.09960472095
+Max leaf nodes: 100          Mean Absolute Error: 27021.244092878136
+Max leaf nodes: 200          Mean Absolute Error: 29015.822642629737
+Max leaf nodes: 500          Mean Absolute Error: 31450.856430996708
+Max leaf nodes: 1000         Mean Absolute Error: 31717.233789954334
+Max leaf nodes: 5000         Mean Absolute Error: 31724.594520547944
+</code></pre>
+
+<h3 id="section-7">Section 7</h3>
+
+<p><a href="https://www.kaggle.com/dansbecker/random-forests">Random Forests</a></p>
+
+<p>This section has use a Random Forest model and you can compare the results to the Decision Tree one.</p>
+
+<pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor
+
+# Create the second model, a Random Forest
+forest_model = RandomForestRegressor()
+forest_model.fit(X_train, y_train)
+forest_preds = forest_model.predict(X_val)
+print(mean_absolute_error(y_val, forest_preds))
+</code></pre>
+
+<pre><code>22458.350528375733
+</code></pre>
+
+<h3 id="putting-all-the-code-in-one-place">Putting all the code in one place</h3>
+
+<pre><code class="language-python"># Import the necessary libraries
+import pandas as pd
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+
+
+# Save filepath to variable
+training_data_filepath = &quot;C:/Development/Kaggle/House Prices - Advanced \
+Regression Techniques/train.csv&quot;
+
+# Read the data and store in a dataframe called training_set
+training_set = pd.read_csv(training_data_filepath)
+
+# Print a summary of the data in training_set
+print(training_set.describe())
+
+# Print the columns in training_set
+print(training_set.columns)
+
+# Store the series of prices separately as training_price_data
+training_price_data = training_set.SalePrice
+
+# Print the first 5 records
+print(training_price_data.head())
+
+# Create a list with the columns I am interested in
+columns_of_interest = [&quot;LotArea&quot;, &quot;YearBuilt&quot;]
+
+# Create a dataframe with just those columns
+training_two_columns = training_set[columns_of_interest]
+
+# Print a summary of the training_two_columns dataframe
+print(training_two_columns.describe())
+
+# Select the target variable and call it y
+y = training_set.SalePrice
+
+# Create a list of the predictor variables
+predictors = [&quot;LotArea&quot;, &quot;YearBuilt&quot;, &quot;1stFlrSF&quot;, &quot;2ndFlrSF&quot;, &quot;FullBath&quot;,
+              &quot;BedroomAbvGr&quot;, &quot;TotRmsAbvGrd&quot;]
+
+# Create a new dataframe with the predictors list
+X = training_set[predictors]
+
+# Define the first model, a Decision Tree
+tree_model = DecisionTreeRegressor()
+
+# Fit model
+tree_model.fit(X, y)
+
+# Make some predictions
+print(&quot;Making predictions for the first 10 houses&quot;)
+print(X.head(n=10))
+print(&quot;The predictions are:&quot;)
+print(tree_model.predict(X.head(n=10)))
+
+# Split data into training and validation data, for both predictors and
+# target.
+# The split is based on a random number generator. Supplying a numeric value
+# to the random_state argument guarantees we get the same split every time we
+# run this script. It can be any number; I'm choosing 42.
+X_train, X_val, y_train, y_val = train_test_split(X, y, random_state=42)
+
+# Define the model
+tree_model = DecisionTreeRegressor()
+
+# Fit model
+tree_model.fit(X_train, y_train)
+
+# Get predicted prices on validation data
+predictions_val = tree_model.predict(X_val)
+print(mean_absolute_error(y_val, predictions_val))
+
+# Create a utility function to help compare MAE scores from differevalues for
+# *max_leaf_nodes*.
+def get_mae(max_leaf_nodes, predictors_train, val_predictors, targ_train,
+            targ_val):
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes,
+                                  random_state=42)
+    model.fit(predictors_train, targ_train)
+    preds_val = model.predict(val_predictors)
+    mae = mean_absolute_error(targ_val, preds_val)
+    return(mae)
+
+
+# Loop through a list of max leaf nodes and print the MAE of each
+for max_leaf_nodes in [5, 10, 25, 50, 100, 200, 500, 1000, 5000]:
+    my_mae = get_mae(max_leaf_nodes, X_train, X_val, y_train, y_val)
+    print(&quot;Max leaf nodes: {0} \t\t Mean Absolute Error: {1}&quot;.
+          format(max_leaf_nodes, my_mae))
+
+# Create the second model, a Random Forest
+forest_model = RandomForestRegressor()
+forest_model.fit(X_train, y_train)
+forest_preds = forest_model.predict(X_val)
+print(mean_absolute_error(y_val, forest_preds))
+</code></pre>
+
+<p>My next post will be the level 2 part of the series and after that I&rsquo;m going to do it in R. I&rsquo;m hoping to have level 2 up in a few days, a week at most.</p>
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/" title="Using Python to import multiple Excel files and export as one text file">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 Michael Skolnik
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://themichaelskolnik.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+
