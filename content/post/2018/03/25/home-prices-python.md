@@ -1,6 +1,6 @@
 ---
 {
-  "title": "My code from the exercises of Level 1 of Kaggle's Learn Maching Learning series",
+  "title": "My code from the exercises of Level 1 of Kaggle's Learn Machine Learning series",
   "subtitle": "",
   "date": "2018-03-25",
   "slug": "home-prices-python",

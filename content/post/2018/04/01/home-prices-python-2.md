@@ -1,3 +1,13 @@
+---
+{
+  "title": "My code from the exercises of Level 2 of Kaggle's Learn Machine Learning series",
+  "subtitle": "",
+  "date": "2018-04-03",
+  "slug": "home-prices-python-2",
+  "tags": ["Python", "machine learning"]
+}
+---
+<!--more-->
 
 ## Level 2 *Learn Maching Learning* series on Kaggle
 This is the level 2 part of the *Learn Machine Learning* series on Kaggle using Python (https://www.kaggle.com/learn/machine-learning). The data used is from the [*Home Prices: Advanced Regression Techniques*](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) competition.
@@ -319,7 +329,6 @@ predictors = ["LotArea", "YearBuilt", "TotRmsAbvGrd"]
 X_train, X_test, y_train, y_test = get_data(training_set, predictors)
 ```
 
-
 ```python
 # Import libraries
 import matplotlib.pyplot as plt
@@ -344,8 +353,7 @@ my_plots = plot_partial_dependence(my_model,
                                   grid_resolution=5)
 ```
 
-
-![png](output_16_0.png)
+{{< figure src="/post/2018/04/01/output_16_0.png" >}}
 
 
 After a certain LotArea, SalePrice begins to decrease. With YearBuilt, there is a leveling off for about 20 years.
@@ -390,7 +398,6 @@ X_train, X_test = X_train_one_hot_encoded.align(
     axis=1)
 ```
 
-
 ```python
 # Import library
 from sklearn.pipeline import make_pipeline
@@ -427,7 +434,6 @@ X = training_set[predictors]
 
 my_pipeline = make_pipeline(Imputer(), RandomForestRegressor())
 ```
-
 
 ```python
 # Import library
