@@ -1,0 +1,75 @@
+---
+title: "My R code from the Level 1 and 2 exercises of Kaggle's Learn Machine Learning series"
+author: "Michael Skolnik"
+subtitle: ""
+date: "2018-04-12"
+slug: "home-prices-r"
+tags: ["R", "machine learning"]
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## *Learn Maching Learning* series on Kaggle in R
+
+This is my R code for the *Learn Machine Learning* series on Kaggle. I've already done the Python one, which is on Kaggle located [here](https://www.kaggle.com/learn/machine-learning). The data used is from the [*Home Prices: Advanced Regression Techniques*](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) competition.
+
+I'm going to run the completed code from level 1 first and then run each level 2 section.
+
+```{r}
+if (!require("randomForest")) {
+  install.packages("randomForest", repos="http://cran.rstudio.com/")
+  library(randomForest)
+}
+
+if (!require("dplyr")) {
+  install.packages("dplyr", repos="http://cran.rstudio.com/")
+  library(dplyr)
+}
+
+if (!require("caTools")) {
+  install.packages("dplyr", repos="http://cran.rstudio.com/")
+  library(caTools)
+}
+
+# Save filepath to variable
+training_data_filepath <- "C:/Development/Kaggle/House Prices - Advanced Regression Techniques/train.csv"
+
+# Import data
+dataset <- read.csv(training_data_filepath)
+
+# Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split <- sample.split(dataset, SplitRatio=0.7)  # for training data
+training_set <- subset(dataset, split==TRUE)
+test_set <- subset(dataset, split==FALSE)
+
+# Create the training and tests dataframe with only numeric predictors
+nums <- unlist(lapply(training_set, is.numeric))
+training_set <- training_set[, nums]
+test_set <- test_set[, nums]
+
+# Drop NAs
+# training_set <- training_set[complete.cases(training_set), ]
+# test_set <- test_set[complete.cases(test_set), ]
+
+# Replace NA with 0
+# training_set[is.na(training_set)] <- 0
+
+# Create the predictor variable
+X <- subset(training_set, select = -c(Id, SalePrice))
+
+# Select the target variable and call it y
+y <- training_set$SalePrice
+
+# Fitting Random Forest Regression to the dataset
+regressor <- randomForest(x=X, y=y, ntree=100)
+```
+
+If I run this I get an error because of the NA values in the data. I need to impute the missing values first.
+
+```{r}
+
+```
