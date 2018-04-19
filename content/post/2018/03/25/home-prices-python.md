@@ -276,8 +276,8 @@ In this section you learn about underfitting, overfitting, and optimizing your m
 
 
 ```python
-# Create a utility function to help compare MAE scores from differevalues for
-# *max_leaf_nodes*.
+# Create a utility function to help compare MAE scores from different values
+# for *max_leaf_nodes*.
 def get_mae(max_leaf_nodes, predictors_train, val_predictors, targ_train,
             targ_val):
     model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes,
