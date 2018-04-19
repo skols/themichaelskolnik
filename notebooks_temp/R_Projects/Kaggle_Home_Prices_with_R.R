@@ -14,19 +14,18 @@ if (!require("caTools")) {
   library(caTools)
 }
 
-if (!require("rpart")) {
-  install.packages("rpart", repos="http://cran.rstudio.com/")
-  library(rpart)
-}
-
 # Save filepath to variable
 training_data_filepath <- "C:/Development/Kaggle/House Prices - Advanced Regression Techniques/train.csv"
 
 # Import data
 dataset <- read.csv(training_data_filepath)
 
+### View some stats about the data
+
 # View some stats and information about the data
 summary(dataset)
+
+### Split the data set into training and test, then create the predictor and target variables
 
 # Split data into training and validation data, for both predictors and target.
 set.seed(42)
@@ -49,11 +48,20 @@ X <- training_set %>%
 # Select the target variable and call it y
 y <- training_set$SalePrice
 
-# Fitting Random Forest Regression to the dataset
-regressor <- randomForest(x=X, y=y, ntree=100)
+### Predict values with a Decision Tree using rpart
 
-# Predicting a new result
-y_pred <- predict(regressor, newdata=test_set)
+# Fitting Decision Tree to the training data
+formula=SalePrice ~ .
+
+regressor <- rpart(formula=formula, data=training_set,
+                   control=rpart.control(cp=.01))
+
+y_pred <- predict(regressor, test_set)
+
+# View a summary of the predicted values
+summary(y_pred)
+
+### Create a function to get the Mean Absolute Error (or MAE)
 
 # Calculating the Mean Absolute Error
 mae <- function(error)
@@ -63,27 +71,73 @@ mae <- function(error)
 
 # Get the MAE
 y_test <- test_set$SalePrice
+error <- (y_test - y_pred)
+mae(error)
+
+### Create a function to compare the MAE for different cp values
+
+# Create the function
+getMae_rpart <- function(formula, training_data, test_data, n) {
+  set.seed(42)
+  regressor_rpart <- rpart(formula=formula, data=training_data,
+                           control=rpart.control(cp=n))
+  y_prediction <- predict(regressor_rpart, newdata=test_data)
+  y_test <- test_data$SalePrice
+  error <- (y_test - y_prediction)
+  print(paste("cp of ", n, " has an MAE of ", mae(error), sep=""))
+}
+
+#### Set up the formula variable and splits, then loop through the values and call the function
+
+# Set the formula variable
+formula <- SalePrice ~ .
+
+# Loop through multiple ntree values
+cps <- c(.5, .1, .05, .02, .01, .005, .003, .001, .0005, .0001)
+
+for (i in cps) {
+  getMae_rpart(formula, training_set, test_set, i)
+}
+
+#### MAE continues to decrease as the cp decreases.
+
+### Predict values with a Random Forest
+
+# Fitting Random Forest Regression to the dataset
+regressor <- randomForest(x=X, y=y, ntree=100)
+
+# Predicting a new result
+y_pred <- predict(regressor, newdata=test_set)
+
+# Get the MAE
+y_test <- test_set$SalePrice
 error <- (y_pred - y_test)
 mae(error)
 
-# Create a function to get the MAE for multiple ntree values
-getMae <- function(X, y, test_data, n) {
+### Create a function to compare the MAE for different ntree values
+
+# Create the function
+getMae_forest <- function(X, y, test_data, n) {
   set.seed(42)
   regressor <- randomForest(x=X, y=y, ntree=n)
   y_prediction <- predict(regressor, newdata=test_data)
   y_test <- test_data$SalePrice
   error <- (y_prediction - y_test)
-  print(paste("ntree equals ", n, ": ", mae(error), sep=""))
+  print(paste("ntree of ", n, " has an MAE of ", mae(error), sep=""))
 }
 
 # Loop through multiple ntree values
-ntrees = c(10, 50, 100, 500, 1000, 5000)
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
 
 for (i in ntrees) {
-  getMae(X, y, test_set, i)
+  getMae_forest(X, y, test_set, i)
 }
 
-# 1000 has the lowest MAE
+# ntree of 1000 has the lowest MAE.
+# 
+# That's all for this post. The more I use R, the more I like it. Python and R both have their advantages though.
+# 
+# Hopefully the second part doesn't take me nearly as long. Until then!
 
 
 # Level 2

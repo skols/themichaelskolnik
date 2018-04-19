@@ -11,7 +11,7 @@
 
 <meta name="author" content="Michael Skolnik" />
 
-<meta name="date" content="2018-04-18" />
+<meta name="date" content="2018-04-19" />
 
 <title>My R code from the Level 1 exercises of Kaggle’s Learn Machine Learning series</title>
 
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">My R code from the Level 1 exercises of Kaggle’s Learn Machine Learning series</h1>
 <h4 class="author"><em>Michael Skolnik</em></h4>
-<h4 class="date"><em>2018-04-18</em></h4>
+<h4 class="date"><em>2018-04-19</em></h4>
 
 </div>
 
@@ -161,6 +161,11 @@ if (!require(&quot;randomForest&quot;)) {
   library(caTools)
 }</code></pre>
 <pre><code>## Loading required package: caTools</code></pre>
+<pre class="r"><code>if (!require(&quot;rpart&quot;)) {
+  install.packages(&quot;rpart&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(rpart)
+}</code></pre>
+<pre><code>## Loading required package: rpart</code></pre>
 <pre class="r"><code># Save filepath to variable
 training_data_filepath &lt;- &quot;C:/Development/Kaggle/House Prices - Advanced Regression Techniques/train.csv&quot;
 
@@ -316,8 +321,8 @@ summary(dataset)</code></pre>
 ##  Max.   :2010   ConLw  :   5   Partial: 125   Max.   :755000  
 ##                 (Other):   9</code></pre>
 </div>
-<div id="use-a-random-forest-to-predict-values" class="section level3">
-<h3>Use a Random Forest to predict values</h3>
+<div id="split-the-data-set-into-training-and-test-then-create-the-predictor-and-target-variables" class="section level3">
+<h3>Split the data set into training and test, then create the predictor and target variables</h3>
 <pre class="r"><code># Split data into training and validation data, for both predictors and target.
 set.seed(42)
 split &lt;- sample.split(dataset, SplitRatio=0.7)  # for training data
@@ -337,13 +342,22 @@ X &lt;- training_set %&gt;%
   select(-SalePrice)
 
 # Select the target variable and call it y
-y &lt;- training_set$SalePrice
+y &lt;- training_set$SalePrice</code></pre>
+</div>
+<div id="predict-values-with-a-decision-tree-using-rpart" class="section level3">
+<h3>Predict values with a Decision Tree using rpart</h3>
+<pre class="r"><code># Fitting Decision Tree to the training data
+formula=SalePrice ~ .
 
-# Fitting Random Forest Regression to the dataset
-regressor &lt;- randomForest(x=X, y=y, ntree=100)
+regressor &lt;- rpart(formula=formula, data=training_set,
+                   control=rpart.control(cp=.01))
 
-# Predicting a new result
-y_pred &lt;- predict(regressor, newdata=test_set)</code></pre>
+y_pred &lt;- predict(regressor, test_set)
+
+# View a summary of the predicted values
+summary(y_pred)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  115718  115718  149822  175554  200484  480209</code></pre>
 </div>
 <div id="create-a-function-to-get-the-mean-absolute-error-or-mae" class="section level3">
 <h3>Create a function to get the Mean Absolute Error (or MAE)</h3>
@@ -355,34 +369,87 @@ mae &lt;- function(error)
 
 # Get the MAE
 y_test &lt;- test_set$SalePrice
+error &lt;- (y_test - y_pred)
+mae(error)</code></pre>
+<pre><code>## [1] 29589.85</code></pre>
+</div>
+<div id="create-a-function-to-compare-the-mae-for-different-cp-values" class="section level3">
+<h3>Create a function to compare the MAE for different cp values</h3>
+<pre class="r"><code># Create the function
+getMae_rpart &lt;- function(formula, training_data, test_data, n) {
+  set.seed(42)
+  regressor_rpart &lt;- rpart(formula=formula, data=training_data,
+                    control=rpart.control(cp=n))
+  y_prediction &lt;- predict(regressor_rpart, newdata=test_data)
+  y_test &lt;- test_data$SalePrice
+  error &lt;- (y_test - y_prediction)
+  print(paste(&quot;cp of &quot;, n, &quot; has an MAE of &quot;, mae(error), sep=&quot;&quot;))
+}</code></pre>
+<p>Set up the formula variable and splits, then loop through the values and call the function</p>
+<pre class="r"><code># Set the formula variable
+formula &lt;- SalePrice ~ .
+
+# Loop through multiple ntree values
+cps &lt;- c(.5, .1, .05, .02, .01, .005, .003, .001, .0005, .0001)
+
+for (i in cps) {
+  getMae_rpart(formula, training_set, test_set, i)
+}</code></pre>
+<pre><code>## [1] &quot;cp of 0.5 has an MAE of 57536.8983354404&quot;
+## [1] &quot;cp of 0.1 has an MAE of 40654.9088557541&quot;
+## [1] &quot;cp of 0.05 has an MAE of 36460.7134426164&quot;
+## [1] &quot;cp of 0.02 has an MAE of 33492.3580079057&quot;
+## [1] &quot;cp of 0.01 has an MAE of 29589.8455005301&quot;
+## [1] &quot;cp of 0.005 has an MAE of 29136.0138171344&quot;
+## [1] &quot;cp of 0.003 has an MAE of 29583.0145339228&quot;
+## [1] &quot;cp of 0.001 has an MAE of 27909.4547519322&quot;
+## [1] &quot;cp of 5e-04 has an MAE of 27597.8067312116&quot;
+## [1] &quot;cp of 1e-04 has an MAE of 27419.4284590988&quot;</code></pre>
+<p>MAE continues to decrease as the cp decreases.</p>
+</div>
+<div id="predict-values-with-a-random-forest" class="section level3">
+<h3>Predict values with a Random Forest</h3>
+<pre class="r"><code># Fitting Random Forest Regression to the dataset
+regressor &lt;- randomForest(x=X, y=y, ntree=100)
+
+# Predicting a new result
+y_pred &lt;- predict(regressor, newdata=test_set)
+
+# Get the MAE
+y_test &lt;- test_set$SalePrice
 error &lt;- (y_pred - y_test)
 mae(error)</code></pre>
-<pre><code>## [1] 23549.43</code></pre>
+<pre><code>## [1] 23217.18</code></pre>
 </div>
 <div id="create-a-function-to-compare-the-mae-for-different-ntree-values" class="section level3">
 <h3>Create a function to compare the MAE for different ntree values</h3>
 <pre class="r"><code># Create the function
-getMae &lt;- function(X, y, test_data, n) {
+getMae_forest &lt;- function(X, y, test_data, n) {
   set.seed(42)
   regressor &lt;- randomForest(x=X, y=y, ntree=n)
   y_prediction &lt;- predict(regressor, newdata=test_data)
   y_test &lt;- test_data$SalePrice
   error &lt;- (y_prediction - y_test)
-  print(paste(&quot;ntree equals &quot;, n, &quot;: &quot;, mae(error), sep=&quot;&quot;))
+  print(paste(&quot;ntree of &quot;, n, &quot; has an MAE of &quot;, mae(error), sep=&quot;&quot;))
 }
 
 # Loop through multiple ntree values
-ntrees = c(10, 50, 100, 500, 1000, 5000)
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
 
 for (i in ntrees) {
-  getMae(X, y, test_set, i)
+  getMae_forest(X, y, test_set, i)
 }</code></pre>
-<pre><code>## [1] &quot;ntree equals 10: 24226.9883834123&quot;
-## [1] &quot;ntree equals 50: 23610.084126271&quot;
-## [1] &quot;ntree equals 100: 23260.3606851458&quot;
-## [1] &quot;ntree equals 500: 23166.618382558&quot;
-## [1] &quot;ntree equals 1000: 23113.7696443243&quot;
-## [1] &quot;ntree equals 5000: 23172.7757985064&quot;</code></pre>
+<pre><code>## [1] &quot;ntree of 1 has an MAE of 35761.9752775473&quot;
+## [1] &quot;ntree of 5 has an MAE of 25399.3227531454&quot;
+## [1] &quot;ntree of 10 has an MAE of 24226.9883834123&quot;
+## [1] &quot;ntree of 30 has an MAE of 23401.1638509278&quot;
+## [1] &quot;ntree of 50 has an MAE of 23610.084126271&quot;
+## [1] &quot;ntree of 100 has an MAE of 23260.3606851458&quot;
+## [1] &quot;ntree of 500 has an MAE of 23166.618382558&quot;
+## [1] &quot;ntree of 1000 has an MAE of 23113.7696443243&quot;
+## [1] &quot;ntree of 5000 has an MAE of 23172.7757985064&quot;</code></pre>
+<p>ntree of 1000 has the lowest MAE.</p>
+<p>That’s all for this post. Hopefully the second part doesn’t take me nearly as long. I don’t think it will as I’ve already started it but things have a way of popping up. Until next time!</p>
 </div>
 </div>
 
