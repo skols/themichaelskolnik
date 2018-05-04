@@ -1,17 +1,30 @@
 # Install and load packages
 if (!require("randomForest")) {
   install.packages("randomForest", repos="http://cran.rstudio.com/")
-  library(randomForest)
+  library(randomForest, lib.loc="~/R/win-library/3.5")
+} else {
+  library(randomForest, lib.loc="~/R/win-library/3.5")
 }
 
 if (!require("dplyr")) {
   install.packages("dplyr", repos="http://cran.rstudio.com/")
-  library(dplyr)
+  library(dplyr, lib.loc="~/R/win-library/3.5")
+} else {
+  library(dplyr, lib.loc="~/R/win-library/3.5")
 }
 
 if (!require("caTools")) {
   install.packages("caTools", repos="http://cran.rstudio.com/")
-  library(caTools)
+  library(caTools, lib.loc="~/R/win-library/3.5")
+} else {
+  library(caTools, lib.loc="~/R/win-library/3.5")
+}
+
+if (!require("rpart")) {
+  install.packages("rpart", repos="http://cran.rstudio.com/")
+  library(rpart, lib.loc="~/R/win-library/3.5")
+} else {
+  library(rpart, lib.loc="~/R/win-library/3.5")
 }
 
 # Save filepath to variable
@@ -149,11 +162,14 @@ test_set <- subset(dataset, split==FALSE)
 
 # Create the training and tests dataframe with only numeric predictors
 nums <- unlist(lapply(training_set, is.numeric))
-training_set <- training_set[, nums]
-test_set <- test_set[, nums]
+training_set_nums <- training_set[, nums]
+test_set_nums <- test_set[, nums]
 
-# Show the number of NAs in each field
-apply(training_set, 2, function(x) {sum(is.na(x))})
+# Show the number of NAs in each field for the training set
+apply(training_set_nums, 2, function(x) {sum(is.na(x))})
+
+# Show the number of NAs in each field for the test set
+apply(test_set_nums, 2, function(x) {sum(is.na(x))})
 
 # Drop NAs
 # training_set <- training_set[complete.cases(training_set), ]
@@ -162,12 +178,56 @@ apply(training_set, 2, function(x) {sum(is.na(x))})
 # Replace NA with 0
 # training_set[is.na(training_set)] <- 0
 
+# Impute missing data using rfImpute
+training_set_nums_impute <- rfImpute(SalePrice ~ ., training_set_nums)
+test_set_nums_impute <- rfImpute(SalePrice ~ ., test_set_nums)
 
 # Create the predictor variable
-X <- subset(training_set, select = -c(Id, SalePrice))
+X <- subset(training_set_nums_impute, select = -c(Id, SalePrice))
 
 # Select the target variable and call it y
-y <- training_set$SalePrice
+y <- training_set_nums_impute$SalePrice
 
-# Predicting a new result
-y_pred <- predict(regressor, newdata=test_set)
+# Loop through multiple ntree values
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
+
+for (i in ntrees) {
+  getMae_forest(X, y, test_set_nums_impute, i)
+}
+
+# ntree of 500 has lowest MAE
+
+### Encoding categorical variables
+
+# Random forest converts categorical variables to dummy for you
+# Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split <- sample.split(dataset, SplitRatio=0.7)  # for training data
+training_set <- subset(dataset, split==TRUE)
+test_set <- subset(dataset, split==FALSE)
+
+# Using model.matrix
+# test_matrix <- model.matrix(SalePrice ~ . -1, training_set)
+
+# Impute missing data using rfImpute
+training_set_impute <- rfImpute(SalePrice ~ ., training_set)
+test_set_impute <- rfImpute(SalePrice ~ ., test_set)
+
+# Create the predictor variable
+X <- subset(training_set_impute, select = -c(Id, SalePrice))
+
+# Select the target variable and call it y
+y <- training_set_impute$SalePrice
+
+# Loop through multiple ntree values
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
+
+for (i in ntrees) {
+  getMae_forest(X, y, test_set_impute, i)
+}
+
+# ntree of 5000 has the lowest MAE but that could be because of a bias with random forests.
+# A quote from Wikipedia’s article on random forests (in the variable selection section):
+# "For data including categorical variables with different number of levels, random forests
+# are biased in favor of those attributes with more levels."
+# That tells me we are including too many and going forward I'll use numeric variables only.
