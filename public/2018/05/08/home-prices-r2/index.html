@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series  &middot; Hi, I&#39;m Mike the data guy</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="R, machine learning, ">
+
+
+<meta property="og:title" content="My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series  &middot; Hi, I&#39;m Mike the data guy ">
+<meta property="og:site_name" content="Hi, I&#39;m Mike the data guy"/>
+<meta property="og:url" content="https://themichaelskolnik.com/2018/05/08/home-prices-r2/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-05-08T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-05-08T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="R">
+    
+<meta property="og:article:tag" content="machine learning">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@mikeskolnik75" />
+<meta name="twitter:creator" content="@mikeskolnik75" />
+<meta name="twitter:title" content="My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://themichaelskolnik.com/2018/05/08/home-prices-r2/" />
+<meta name="twitter:domain" content="https://themichaelskolnik.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-05-08",
+    "description": "",
+    "wordCount": 1486
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://themichaelskolnik.com/2018/05/08/home-prices-r2/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://themichaelskolnik.com/touch-icon-144-precomposed.png">
+<link href="https://themichaelskolnik.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.36" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/style.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'Your Google Analytics tracking code', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://themichaelskolnik.com/">
+  Analysis, Visualizations, and Coding
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Data guy with SQL, Python, and R skills looking for a full-time or freelance remote position
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://themichaelskolnik.com/">Home</a>
+
+
+  
+<a href="https://themichaelskolnik.com/about/" title="About Me">About Me</a>
+
+<a href="https://themichaelskolnik.com/post/" title="Shows a list of posts">Posts</a>
+
+<a href="https://themichaelskolnik.com/resume/" title="My resume">Resume</a>
+
+<a href="https://themichaelskolnik.com/tags/" title="Shows a list of tags">Tags</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:mikeskolnik75@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/skols">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/mikeskolnik">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+<a id="contact-link-twitter" class="contact_link" href="https://twitter.com/mikeskolnik75">
+  <span class="fa fa-twitter-square"></span><span>twitter</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series
+</h1>
+
+  <div class="metas">
+<time datetime="2018-05-08">8 May, 2018</time>
+
+
+  
+  &middot; Read in about 7 min
+  &middot; (1486 Words)
+  <br>
+  
+<a class="label" href="https://themichaelskolnik.com/tags/r">R</a>
+
+<a class="label" href="https://themichaelskolnik.com/tags/machine-learning">machine learning</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p></p>
+
+<h2 id="learn-maching-learning-series-on-kaggle-in-r"><em>Learn Maching Learning</em> series on Kaggle in R</h2>
+
+<p>This is my R code for the first two sections of the level 2 part of the <em>Learn Machine Learning</em> series on Kaggle. I&rsquo;ve already done the Python one, which is on Kaggle located <a href="https://www.kaggle.com/learn/machine-learning">here</a>. The data used is from the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques"><em>Home Prices: Advanced Regression Techniques</em></a> competition.</p>
+
+<p>I had planned on doing all of level 2 but that was more difficult than I expected. One reason for that is the Python series told me what packages to use and gave me an outline of steps to follow. Since I&rsquo;m doing this in R with no tutorial to follow, I had to research and decide which packages to use and steps to follow. That slowed me down but I definitely learned a lot. I also had problems with Jupyter and the R kernel, so I worked on this in RStudio while fixing those issues.</p>
+
+<h3 id="load-and-install-packages-and-load-the-data">Load and install packages and load the data</h3>
+
+<p>I learned since the last time that I need to do an if-else statement, not just if, when checking for packages before loading them.</p>
+
+<pre><code class="language-R"># Install and load packages
+if (!require(&quot;randomForest&quot;)) {
+  install.packages(&quot;randomForest&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(randomForest)
+} else {
+  library(randomForest)
+}
+
+if (!require(&quot;dplyr&quot;)) {
+  install.packages(&quot;dplyr&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(dplyr)
+} else {
+  library(dplyr)
+}
+
+if (!require(&quot;caTools&quot;)) {
+  install.packages(&quot;caTools&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(caTools)
+} else {
+  library(caTools)
+}
+
+if (!require(&quot;rpart&quot;)) {
+  install.packages(&quot;rpart&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(rpart)
+} else {
+  library(rpart)
+}
+
+# Save filepath to variable
+training_data_filepath &lt;- &quot;C:/Development/Kaggle/House Prices - Advanced Regression Techniques/train.csv&quot;
+
+# Import data
+dataset &lt;- read.csv(training_data_filepath)
+</code></pre>
+
+<pre><code>Loading required package: randomForest
+randomForest 4.6-12
+Type rfNews() to see new features/changes/bug fixes.
+Loading required package: dplyr
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:randomForest':
+
+    combine
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Loading required package: caTools
+Warning message:
+&quot;package 'caTools' was built under R version 3.4.4&quot;Loading required package: rpart
+</code></pre>
+
+<h3 id="split-the-data-set-into-training-and-test">Split the data set into training and test</h3>
+
+<p>This is the same as before.</p>
+
+<pre><code class="language-R"># Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split &lt;- sample.split(dataset, SplitRatio=0.7)  # for training data
+training_set &lt;- subset(dataset, split==TRUE)
+test_set &lt;- subset(dataset, split==FALSE)
+</code></pre>
+
+<h3 id="select-only-the-numeric-predictors-and-then-impute-missing-data">Select only the numeric predictors and then impute missing data</h3>
+
+<pre><code class="language-R"># Create the training and tests dataframe with only numeric predictors
+nums &lt;- unlist(lapply(training_set, is.numeric))
+training_set_nums &lt;- training_set[, nums]
+test_set_nums &lt;- test_set[, nums]
+
+# Show the number of NAs in each field for the training set
+apply(training_set_nums, 2, function(x) {sum(is.na(x))})
+</code></pre>
+
+<dl class=dl-horizontal>
+    <dt>Id</dt>
+        <dd>0</dd>
+    <dt>MSSubClass</dt>
+        <dd>0</dd>
+    <dt>LotFrontage</dt>
+        <dd>176</dd>
+    <dt>LotArea</dt>
+        <dd>0</dd>
+    <dt>OverallQual</dt>
+        <dd>0</dd>
+    <dt>OverallCond</dt>
+        <dd>0</dd>
+    <dt>YearBuilt</dt>
+        <dd>0</dd>
+    <dt>YearRemodAdd</dt>
+        <dd>0</dd>
+    <dt>MasVnrArea</dt>
+        <dd>5</dd>
+    <dt>BsmtFinSF1</dt>
+        <dd>0</dd>
+    <dt>BsmtFinSF2</dt>
+        <dd>0</dd>
+    <dt>BsmtUnfSF</dt>
+        <dd>0</dd>
+    <dt>TotalBsmtSF</dt>
+        <dd>0</dd>
+    <dt>X1stFlrSF</dt>
+        <dd>0</dd>
+    <dt>X2ndFlrSF</dt>
+        <dd>0</dd>
+    <dt>LowQualFinSF</dt>
+        <dd>0</dd>
+    <dt>GrLivArea</dt>
+        <dd>0</dd>
+    <dt>BsmtFullBath</dt>
+        <dd>0</dd>
+    <dt>BsmtHalfBath</dt>
+        <dd>0</dd>
+    <dt>FullBath</dt>
+        <dd>0</dd>
+    <dt>HalfBath</dt>
+        <dd>0</dd>
+    <dt>BedroomAbvGr</dt>
+        <dd>0</dd>
+    <dt>KitchenAbvGr</dt>
+        <dd>0</dd>
+    <dt>TotRmsAbvGrd</dt>
+        <dd>0</dd>
+    <dt>Fireplaces</dt>
+        <dd>0</dd>
+    <dt>GarageYrBlt</dt>
+        <dd>53</dd>
+    <dt>GarageCars</dt>
+        <dd>0</dd>
+    <dt>GarageArea</dt>
+        <dd>0</dd>
+    <dt>WoodDeckSF</dt>
+        <dd>0</dd>
+    <dt>OpenPorchSF</dt>
+        <dd>0</dd>
+    <dt>EnclosedPorch</dt>
+        <dd>0</dd>
+    <dt>X3SsnPorch</dt>
+        <dd>0</dd>
+    <dt>ScreenPorch</dt>
+        <dd>0</dd>
+    <dt>PoolArea</dt>
+        <dd>0</dd>
+    <dt>MiscVal</dt>
+        <dd>0</dd>
+    <dt>MoSold</dt>
+        <dd>0</dd>
+    <dt>YrSold</dt>
+        <dd>0</dd>
+    <dt>SalePrice</dt>
+        <dd>0</dd>
+</dl>
+
+<pre><code class="language-R"># Show the number of NAs in each field for the test set
+apply(test_set_nums, 2, function(x) {sum(is.na(x))})
+</code></pre>
+
+<dl class=dl-horizontal>
+    <dt>Id</dt>
+        <dd>0</dd>
+    <dt>MSSubClass</dt>
+        <dd>0</dd>
+    <dt>LotFrontage</dt>
+        <dd>83</dd>
+    <dt>LotArea</dt>
+        <dd>0</dd>
+    <dt>OverallQual</dt>
+        <dd>0</dd>
+    <dt>OverallCond</dt>
+        <dd>0</dd>
+    <dt>YearBuilt</dt>
+        <dd>0</dd>
+    <dt>YearRemodAdd</dt>
+        <dd>0</dd>
+    <dt>MasVnrArea</dt>
+        <dd>3</dd>
+    <dt>BsmtFinSF1</dt>
+        <dd>0</dd>
+    <dt>BsmtFinSF2</dt>
+        <dd>0</dd>
+    <dt>BsmtUnfSF</dt>
+        <dd>0</dd>
+    <dt>TotalBsmtSF</dt>
+        <dd>0</dd>
+    <dt>X1stFlrSF</dt>
+        <dd>0</dd>
+    <dt>X2ndFlrSF</dt>
+        <dd>0</dd>
+    <dt>LowQualFinSF</dt>
+        <dd>0</dd>
+    <dt>GrLivArea</dt>
+        <dd>0</dd>
+    <dt>BsmtFullBath</dt>
+        <dd>0</dd>
+    <dt>BsmtHalfBath</dt>
+        <dd>0</dd>
+    <dt>FullBath</dt>
+        <dd>0</dd>
+    <dt>HalfBath</dt>
+        <dd>0</dd>
+    <dt>BedroomAbvGr</dt>
+        <dd>0</dd>
+    <dt>KitchenAbvGr</dt>
+        <dd>0</dd>
+    <dt>TotRmsAbvGrd</dt>
+        <dd>0</dd>
+    <dt>Fireplaces</dt>
+        <dd>0</dd>
+    <dt>GarageYrBlt</dt>
+        <dd>28</dd>
+    <dt>GarageCars</dt>
+        <dd>0</dd>
+    <dt>GarageArea</dt>
+        <dd>0</dd>
+    <dt>WoodDeckSF</dt>
+        <dd>0</dd>
+    <dt>OpenPorchSF</dt>
+        <dd>0</dd>
+    <dt>EnclosedPorch</dt>
+        <dd>0</dd>
+    <dt>X3SsnPorch</dt>
+        <dd>0</dd>
+    <dt>ScreenPorch</dt>
+        <dd>0</dd>
+    <dt>PoolArea</dt>
+        <dd>0</dd>
+    <dt>MiscVal</dt>
+        <dd>0</dd>
+    <dt>MoSold</dt>
+        <dd>0</dd>
+    <dt>YrSold</dt>
+        <dd>0</dd>
+    <dt>SalePrice</dt>
+        <dd>0</dd>
+</dl>
+
+<pre><code class="language-R"># Impute missing data using rfImpute
+training_set_nums_impute &lt;- rfImpute(SalePrice ~ ., training_set_nums)
+test_set_nums_impute &lt;- rfImpute(SalePrice ~ ., test_set_nums)
+</code></pre>
+
+<pre><code>     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.511e+08    14.40 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.585e+08    14.53 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.603e+08    14.56 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.545e+08    14.46 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.515e+08    14.41 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 7.563e+08    10.52 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 7.763e+08    10.80 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.117e+08    11.29 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.224e+08    11.44 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.131e+08    11.31 |
+</code></pre>
+
+<h3 id="create-the-predictor-and-target-variables-from-the-imputed-data">Create the predictor and target variables from the imputed data</h3>
+
+<p>Then get the MAEs for multiple ntree values.</p>
+
+<pre><code class="language-R"># Create the predictor variable
+X &lt;- subset(training_set_nums_impute, select = -c(Id, SalePrice))
+
+# Select the target variable and call it y
+y &lt;- training_set_nums_impute$SalePrice
+
+# Create a function to calculate the Mean Absolute Error
+mae &lt;- function(error)
+{
+  mean(abs(error))
+}
+
+# Create a function to get the MAE of a random forest
+getMae_forest &lt;- function(X, y, test_data, n) {
+  set.seed(42)
+  regressor &lt;- randomForest(x=X, y=y, ntree=n)
+  y_prediction &lt;- predict(regressor, newdata=test_data)
+  y_test &lt;- test_data$SalePrice
+  error &lt;- (y_prediction - y_test)
+  print(paste(&quot;ntree of &quot;, n, &quot; has an MAE of &quot;, mae(error), sep=&quot;&quot;))
+}
+
+# Loop through multiple ntree values
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
+
+for (i in ntrees) {
+  getMae_forest(X, y, test_set_nums_impute, i)
+}
+</code></pre>
+
+<pre><code>[1] &quot;ntree of 1 has an MAE of 28209.0257374631&quot;
+[1] &quot;ntree of 5 has an MAE of 20668.9521828909&quot;
+[1] &quot;ntree of 10 has an MAE of 19227.5275073746&quot;
+[1] &quot;ntree of 30 has an MAE of 17640.3471914946&quot;
+[1] &quot;ntree of 50 has an MAE of 17380.0999144543&quot;
+[1] &quot;ntree of 100 has an MAE of 17154.4681511799&quot;
+[1] &quot;ntree of 500 has an MAE of 16985.3050430152&quot;
+[1] &quot;ntree of 1000 has an MAE of 17151.1359503793&quot;
+[1] &quot;ntree of 5000 has an MAE of 17120.9017568099&quot;
+</code></pre>
+
+<p>ntree of 500 has lowest MAE</p>
+
+<h3 id="encoding-categorical-variables">Encoding categorical variables</h3>
+
+<p>Random forest in R converts categorical variables to dummy for you.</p>
+
+<pre><code class="language-R"># Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split &lt;- sample.split(dataset, SplitRatio=0.7)  # for training data
+training_set &lt;- subset(dataset, split==TRUE)
+test_set &lt;- subset(dataset, split==FALSE)
+
+# Impute missing data using rfImpute
+training_set_impute &lt;- rfImpute(SalePrice ~ ., training_set)
+test_set_impute &lt;- rfImpute(SalePrice ~ ., test_set)
+
+# Create the predictor variable
+X &lt;- subset(training_set_impute, select = -c(Id, SalePrice))
+
+# Select the target variable and call it y
+y &lt;- training_set_impute$SalePrice
+
+# Loop through multiple ntree values
+ntrees = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
+
+for (i in ntrees) {
+  getMae_forest(X, y, test_set_impute, i)
+}
+</code></pre>
+
+<pre><code>     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 7.747e+08    13.11 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.007e+08    13.55 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 7.933e+08    13.42 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 7.677e+08    12.99 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.034e+08    13.59 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.134e+08    11.31 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.524e+08    11.85 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.846e+08    12.30 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.484e+08    11.80 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 9.14e+08    12.71 |
+[1] &quot;ntree of 1 has an MAE of 32758.8626474926&quot;
+[1] &quot;ntree of 5 has an MAE of 21188.8914823009&quot;
+[1] &quot;ntree of 10 has an MAE of 19193.7760803835&quot;
+[1] &quot;ntree of 30 has an MAE of 18162.4315843166&quot;
+[1] &quot;ntree of 50 has an MAE of 18186.106070059&quot;
+[1] &quot;ntree of 100 has an MAE of 17762.6606873156&quot;
+[1] &quot;ntree of 500 has an MAE of 17872.5035027286&quot;
+[1] &quot;ntree of 1000 has an MAE of 17851.2130004056&quot;
+[1] &quot;ntree of 5000 has an MAE of 17890.0051326422&quot;
+</code></pre>
+
+<p>ntree of 1000 has the lowest MAE but that could be because of a bias with random forests. A quote from Wikipedia’s article on random forests (in the <a href="https://en.wikipedia.org/wiki/Random_forest#Variable_importance">variable importance section</a>):</p>
+
+<p>&laquo;For data including categorical variables with different number of levels, random forests are biased in favor of those attributes with more levels.&raquo;</p>
+
+<p>That tells me we are including too many and going forward I&rsquo;ll need to limit them by using numeric variables only or some mix of the two. I&rsquo;ll have to do some research to determine the best way to determine a mix then.</p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>I&rsquo;m going to work on the next few sections in R but I&rsquo;m not sure how some of it will translate to R. I know I can do XGBoost but I&rsquo;m not entirely sure about Partial Dependence Plots. I can also do Cross Validation and probably Data Leakage, but I&rsquo;m unsure about Pipelines. I know I can do pipelines with %&gt;% and I think I can do similar to pipelines in Python with that. I&rsquo;ll have to play around with it.</p>
+
+<p>Before doing all that I think I&rsquo;m going to do a post on how I set up my R environment. I like what I have set up now and would like to share it.</p>
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://themichaelskolnik.com/2018/04/19/home-prices-r1/" title="My R code from the Level 1 exercises of Kaggle&#39;s Learn Machine Learning series">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 Michael Skolnik
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://themichaelskolnik.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+
