@@ -9,10 +9,20 @@
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
     <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
     <copyright>(c) 2018 Michael Skolnik</copyright>
-    <lastBuildDate>Tue, 08 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://themichaelskolnik.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Anaconda R environment</title>
+      <link>https://themichaelskolnik.com/2018/06/03/my-r-environment/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/2018/06/03/my-r-environment/</guid>
+      <description>Using Jupyter Notebook with R by creating a new environment using Anaconda In this post I want to explain the R environment that I&amp;rsquo;ve created. I use Anaconda (available here) for my Python work, though these steps should be the same with MiniConda. Also, I&amp;rsquo;m doing this on Windows; commands and the look of the terminal prompt will be slightly different on Mac or Linux.
+Creating a new environment You can install the r-essentials package into your current Anaconda by running the following:</description>
+    </item>
     
     <item>
       <title>My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series</title>
