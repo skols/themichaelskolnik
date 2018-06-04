@@ -9,10 +9,19 @@
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
     <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
     <copyright>(c) 2018 Michael Skolnik</copyright>
-    <lastBuildDate>Sun, 03 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://themichaelskolnik.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series</title>
+      <link>https://themichaelskolnik.com/2018/06/04/home-prices-r3/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/2018/06/04/home-prices-r3/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>My Anaconda R environment</title>

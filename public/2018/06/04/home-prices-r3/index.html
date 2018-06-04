@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series  &middot; Hi, I&#39;m Mike the data guy</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series  &middot; Hi, I&#39;m Mike the data guy ">
+<meta property="og:site_name" content="Hi, I&#39;m Mike the data guy"/>
+<meta property="og:url" content="https://themichaelskolnik.com/2018/06/04/home-prices-r3/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-06-04T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-06-04T00:00:00Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@mikeskolnik75" />
+<meta name="twitter:creator" content="@mikeskolnik75" />
+<meta name="twitter:title" content="My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://themichaelskolnik.com/2018/06/04/home-prices-r3/" />
+<meta name="twitter:domain" content="https://themichaelskolnik.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-06-04",
+    "description": "",
+    "wordCount": 1025
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://themichaelskolnik.com/2018/06/04/home-prices-r3/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://themichaelskolnik.com/touch-icon-144-precomposed.png">
+<link href="https://themichaelskolnik.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.36" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/style.css">
+<link rel="stylesheet" href="https://themichaelskolnik.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'Your Google Analytics tracking code', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://themichaelskolnik.com/">
+  Analysis, Visualizations, and Coding
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Data guy with SQL, Python, and R skills looking for a full-time or freelance remote position
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://themichaelskolnik.com/">Home</a>
+
+
+  
+<a href="https://themichaelskolnik.com/about/" title="About Me">About Me</a>
+
+<a href="https://themichaelskolnik.com/post/" title="Shows a list of posts">Posts</a>
+
+<a href="https://themichaelskolnik.com/resume/" title="My resume">Resume</a>
+
+<a href="https://themichaelskolnik.com/tags/" title="Shows a list of tags">Tags</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:mikeskolnik75@gmail.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/skols">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/mikeskolnik">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+<a id="contact-link-twitter" class="contact_link" href="https://twitter.com/mikeskolnik75">
+  <span class="fa fa-twitter-square"></span><span>twitter</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series
+</h1>
+
+  <div class="metas">
+<time datetime="2018-06-04">4 Jun, 2018</time>
+
+
+  
+  &middot; Read in about 5 min
+  &middot; (1025 Words)
+  <br>
+  
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p></p>
+
+<h2 id="learn-maching-learning-series-on-kaggle-in-r"><em>Learn Maching Learning</em> series on Kaggle in R</h2>
+
+<p>This is my R code for sections 3 and 4 of the level 2 part of the <em>Learn Machine Learning</em> series on Kaggle. I&rsquo;ve already done the Python one, which is on Kaggle located <a href="https://www.kaggle.com/learn/machine-learning">here</a>. The data used is from the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques"><em>Home Prices: Advanced Regression Techniques</em></a> competition.</p>
+
+<h3 id="load-and-install-packages-and-load-the-data">Load and install packages and load the data</h3>
+
+<pre><code class="language-R"># Install and load packages
+# For random forests and partial dependence plots
+if (!require(&quot;randomForest&quot;)) {
+  install.packages(&quot;randomForest&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(randomForest)
+} else {
+  library(randomForest)
+}
+
+if (!require(&quot;dplyr&quot;)) {
+  install.packages(&quot;dplyr&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(dplyr)
+} else {
+  library(dplyr)
+}
+
+if (!require(&quot;caTools&quot;)) {
+  install.packages(&quot;caTools&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(caTools)
+} else {
+  library(caTools)
+}
+
+if (!require(&quot;rpart&quot;)) {
+  install.packages(&quot;rpart&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(rpart)
+} else {
+  library(rpart)
+}
+
+if (!require(&quot;caret&quot;)) {
+  install.packages(&quot;caret&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(rpart)
+} else {
+  library(rpart)
+}
+
+# For XGBoost
+if (!require(&quot;xgboost&quot;)) {
+  install.packages(&quot;xgboost&quot;, repos=&quot;http://cran.rstudio.com/&quot;)
+  library(xgboost)
+} else {
+  library(xgboost)
+}
+
+# Save filepath to variable
+training_data_filepath &lt;- &quot;C:/Development/Kaggle/House Prices - Advanced Regression Techniques/train.csv&quot;
+
+# Import data
+dataset &lt;- read.csv(training_data_filepath)
+</code></pre>
+
+<h3 id="xgboost">XGBoost</h3>
+
+<p>I&rsquo;m going to use XGBoost on the data, which requires some upfront work. The xgboost package is required to model with XGBoost.</p>
+
+<pre><code class="language-R"># Create the dataframe with only numeric predictors
+nums &lt;- unlist(lapply(dataset, is.numeric))
+dataset_nums &lt;- dataset[, nums]
+
+# Create the dataframe with only categorical predictors
+dataset_cat &lt;- dataset[, !nums]
+
+# Use dummyVars from the caret package to perform one-hot encoding
+# on the categorical features
+dummies &lt;- dummyVars( ~ ., data=dataset_cat)
+dataset_dummies &lt;- as.data.frame(predict(dummies, newdata=dataset_cat))
+
+# Impute missing numeric data using rfImpute
+dataset_nums_impute &lt;- rfImpute(SalePrice ~ ., dataset_nums)
+</code></pre>
+
+<pre><code>     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.414e+08    13.34 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.265e+08    13.10 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.571e+08    13.59 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.417e+08    13.35 |
+     |      Out-of-bag   |
+Tree |      MSE  %Var(y) |
+ 300 | 8.877e+08    14.07 |
+</code></pre>
+
+<p>Combine the imputed and dummies datasets and view the top records</p>
+
+<pre><code class="language-R">dataset_combined &lt;- cbind(dataset_nums_impute, dataset_dummies)
+head(dataset_combined)
+</code></pre>
+
+<table class="fixed_headers">
+<thead><tr><th scope=col>SalePrice</th><th scope=col>Id</th><th scope=col>MSSubClass</th><th scope=col>LotFrontage</th><th scope=col>LotArea</th><th scope=col>OverallQual</th><th scope=col>OverallCond</th><th scope=col>YearBuilt</th><th scope=col>YearRemodAdd</th><th scope=col>MasVnrArea</th><th scope=col>...</th><th scope=col>SaleType.CWD</th><th scope=col>SaleType.New</th><th scope=col>SaleType.Oth</th><th scope=col>SaleType.WD</th><th scope=col>SaleCondition.Abnorml</th><th scope=col>SaleCondition.AdjLand</th><th scope=col>SaleCondition.Alloca</th><th scope=col>SaleCondition.Family</th><th scope=col>SaleCondition.Normal</th><th scope=col>SaleCondition.Partial</th></tr></thead>
+<tbody>
+    <tr><td>208500</td><td>1     </td><td>60    </td><td>65    </td><td> 8450 </td><td>7     </td><td>5     </td><td>2003  </td><td>2003  </td><td>196   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td></tr>
+    <tr><td>181500</td><td>2     </td><td>20    </td><td>80    </td><td> 9600 </td><td>6     </td><td>8     </td><td>1976  </td><td>1976  </td><td>  0   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td></tr>
+    <tr><td>223500</td><td>3     </td><td>60    </td><td>68    </td><td>11250 </td><td>7     </td><td>5     </td><td>2001  </td><td>2002  </td><td>162   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td></tr>
+    <tr><td>140000</td><td>4     </td><td>70    </td><td>60    </td><td> 9550 </td><td>7     </td><td>5     </td><td>1915  </td><td>1970  </td><td>  0   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td></tr>
+    <tr><td>250000</td><td>5     </td><td>60    </td><td>84    </td><td>14260 </td><td>8     </td><td>5     </td><td>2000  </td><td>2000  </td><td>350   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td></tr>
+    <tr><td>143000</td><td>6     </td><td>50    </td><td>85    </td><td>14115 </td><td>5     </td><td>5     </td><td>1993  </td><td>1995  </td><td>  0   </td><td>...   </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td><td>0     </td><td>0     </td><td>0     </td><td>1     </td><td>0     </td></tr>
+</tbody>
+</table>
+
+<h4 id="split-the-data-set-into-training-and-test">Split the data set into training and test</h4>
+
+<p>This is simliar to before, using dataset_combined instead of dataset.</p>
+
+<pre><code class="language-R"># Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split &lt;- sample.split(dataset_combined, SplitRatio=0.7)  # for training data
+training_set &lt;- subset(dataset_combined, split==TRUE)
+test_set &lt;- subset(dataset_combined, split==FALSE)
+</code></pre>
+
+<pre><code class="language-R"># Create X and y from the training and test sets
+X_train &lt;- training_set %&gt;%
+    select(-c(Id, SalePrice))
+X_test &lt;- test_set %&gt;%
+    select(-c(Id, SalePrice))
+y_train &lt;- training_set$SalePrice
+y_test &lt;- test_set$SalePrice
+</code></pre>
+
+<h4 id="create-the-xgboost-model-and-predict-values">Create the XGBoost model and predict values</h4>
+
+<pre><code class="language-R">xgb &lt;- xgboost(data.matrix(X_train), y_train, nrounds=25, verbose=0)
+y_pred &lt;- predict(xgb, data.matrix(X_test))
+</code></pre>
+
+<pre><code class="language-R"># Create an MAE function to get the Mean Absolute Error
+mae &lt;- function(error)
+{
+  mean(abs(error))
+}
+
+error &lt;- y_pred - y_test
+
+mae(error)
+</code></pre>
+
+<p>19779.9675398633</p>
+
+<pre><code class="language-R"># Create a function to get the MAE of XGBoost nround values
+getMae_xgb &lt;- function(X_train, y_train, X_test, y_test, n) {
+  set.seed(42)
+  xgb &lt;- xgboost(data.matrix(X_train), y_train, nrounds=n, verbose=0)
+  y_pred &lt;- predict(xgb, data.matrix(X_test))
+  error &lt;- (y_pred - y_test)
+  print(paste(&quot;nround of &quot;, n, &quot; has an MAE of &quot;, mae(error), sep=&quot;&quot;))
+}
+
+# Loop through multiple nround values
+nrounds = c(1, 5, 10, 30, 50, 100, 500, 1000, 5000)
+
+for (i in nrounds) {
+  getMae_xgb(X_train, y_train, X_test, y_test, i)
+}
+</code></pre>
+
+<pre><code>[1] &quot;nround of 1 has an MAE of 136694.404586062&quot;
+[1] &quot;nround of 5 has an MAE of 39075.4283438924&quot;
+[1] &quot;nround of 10 has an MAE of 21415.4554207005&quot;
+[1] &quot;nround of 30 has an MAE of 19772.0597238041&quot;
+[1] &quot;nround of 50 has an MAE of 19694.1839763667&quot;
+[1] &quot;nround of 100 has an MAE of 19637.0124928815&quot;
+[1] &quot;nround of 500 has an MAE of 19621.2550363041&quot;
+[1] &quot;nround of 1000 has an MAE of 19621.2714977221&quot;
+[1] &quot;nround of 5000 has an MAE of 19621.4138667426&quot;
+</code></pre>
+
+<p>nround of 500 has the lowest MAE but it isn&rsquo;t much better than 100 and even 50. These different nround values take some time to run and the higher values don&rsquo;t seem to make much of a difference with this dataset. There are other parameters I can tune and may try at a later date and those could make more of a difference than the higher nround values.</p>
+
+<h3 id="partial-dependence-plots">Partial Dependence Plots</h3>
+
+<p>Partial Dependence Plots in R can be done using partialPlot function available in the randomForest package.</p>
+
+<h4 id="prepare-and-model-the-data">Prepare and model the data</h4>
+
+<pre><code class="language-R"># Split data into training and validation data, for both predictors and target.
+set.seed(42)
+split &lt;- sample.split(dataset, SplitRatio=0.7)  # for training data
+training_set &lt;- subset(dataset, split==TRUE)
+test_set &lt;- subset(dataset, split==FALSE)
+
+# Create the training and tests dataframe with only a few selected predicted variables
+predictors &lt;- c(&quot;LotArea&quot;, &quot;YearBuilt&quot;, &quot;TotRmsAbvGrd&quot;, &quot;SalePrice&quot;)
+training_set_preds &lt;- training_set[, predictors]
+test_set_preds &lt;- test_set[, predictors]
+
+# Create the predictor variable
+X &lt;- subset(training_set_preds, select = -SalePrice)
+
+# Select the target variable and call it y
+y &lt;- training_set_preds$SalePrice
+
+# Fit Random Forest regression to the dataset and predict a new result
+regressor &lt;- randomForest(x=X, y=y, ntree=500)
+y_prediction &lt;- predict(regressor, newdata=subset(test_set_preds, select = -SalePrice))
+</code></pre>
+
+<h4 id="create-the-partial-dependence-plots">Create the Partial Dependence Plots</h4>
+
+<pre><code class="language-R"># Partial Dependence Plot with LotArea
+partialPlot(regressor, X, LotArea)
+</code></pre>
+
+
+<figure >
+    
+        <img src="/post/2018/06/03/output_17_0.png" />
+    
+    
+</figure>
+
+
+<pre><code class="language-R"># Partial Dependence Plot with YearBuilt
+partialPlot(regressor, X, YearBuilt)
+</code></pre>
+
+
+<figure >
+    
+        <img src="/post/2018/06/03/output_18_0.png" />
+    
+    
+</figure>
+
+
+<pre><code class="language-R"># Partial Dependence Plot with TotRmsAbvGrd
+partialPlot(regressor, X, TotRmsAbvGrd)
+</code></pre>
+
+
+<figure >
+    
+        <img src="/post/2018/06/03/output_19_0.png" />
+    
+    
+</figure>
+
+
+<p>SalePrice generally increases as LotArea, YearBuilt, and TotRmsAbvGrd increase, though there is a leveling off between 8 to 10 rooms above ground.</p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>I&rsquo;m going to work on the next few sections. I still have Cross Validation, Data Leakage, and Pipelines yet to figure out and then code. I&rsquo;m not sure yet how to do those so I&rsquo;ll keep researching and learning!</p>
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://themichaelskolnik.com/2018/06/03/my-r-environment/" title="My Anaconda R environment">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 Michael Skolnik
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//themichaelskolnik-com.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://themichaelskolnik.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+
