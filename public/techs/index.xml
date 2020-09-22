@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Techs on Hi, I&#39;m Mike</title>
+    <link>https://themichaelskolnik.com/techs/</link>
+    <description>Recent content in Techs on Hi, I&#39;m Mike</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
+    <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
+    <copyright>© 2020 Mike Skolnik</copyright>
+    <lastBuildDate>Tue, 22 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://themichaelskolnik.com/techs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GraphQL</title>
+      <link>https://themichaelskolnik.com/techs/graphql/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/techs/graphql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://themichaelskolnik.com/techs/javascript/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/techs/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://themichaelskolnik.com/techs/python/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/techs/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>REST</title>
+      <link>https://themichaelskolnik.com/techs/rest/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/techs/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://themichaelskolnik.com/techs/vue/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/techs/vue/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

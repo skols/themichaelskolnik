@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Hi, I&#39;m Mike</title>
+    <link>https://themichaelskolnik.com/techs/python/</link>
+    <description>Recent content in Python on Hi, I&#39;m Mike</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
+    <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
+    <copyright>© 2020 Mike Skolnik</copyright>
+    <lastBuildDate>Tue, 22 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://themichaelskolnik.com/techs/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue JS Developer with J.M. Smucker</title>
+      <link>https://themichaelskolnik.com/portfolio/smucker/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <author>mikeskolnik75@gmail.com (Mike)</author>
+      <guid>https://themichaelskolnik.com/portfolio/smucker/</guid>
+      <description>Vue JS developer at J.M. Smucker Company. Created REST API with a Python backend and Vue frontend for one project. Create GraphQL API with a Python Flask backend and Vue frontend for another. Took existing codebase and refactored to be cleaner and more organized.</description>
+    </item>
+    
+  </channel>
+</rss>

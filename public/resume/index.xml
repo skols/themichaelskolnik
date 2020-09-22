@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RESUME on Hi, I&#39;m Mike</title>
+    <link>https://themichaelskolnik.com/resume/</link>
+    <description>Recent content in RESUME on Hi, I&#39;m Mike</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
+    <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
+    <copyright>© 2020 Mike Skolnik</copyright><atom:link href="https://themichaelskolnik.com/resume/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

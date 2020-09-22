@@ -1,81 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Hi, I&#39;m Mike the data guy</title>
+    <title>POST on Hi, I&#39;m Mike</title>
     <link>https://themichaelskolnik.com/post/</link>
-    <description>Recent content in Posts on Hi, I&#39;m Mike the data guy</description>
+    <description>Recent content in POST on Hi, I&#39;m Mike</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-EN</language>
+    <language>en-us</language>
     <managingEditor>mikeskolnik75@gmail.com (Mike)</managingEditor>
     <webMaster>mikeskolnik75@gmail.com (Mike)</webMaster>
-    <copyright>(c) 2018 Michael Skolnik</copyright>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://themichaelskolnik.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>© 2020 Mike Skolnik</copyright>
+    <lastBuildDate>Fri, 03 May 2019 09:37:55 +0200</lastBuildDate><atom:link href="https://themichaelskolnik.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My R code from sections 3 and 4 of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series</title>
-      <link>https://themichaelskolnik.com/2018/06/04/home-prices-r3/</link>
-      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <title>Getting started</title>
+      <link>https://themichaelskolnik.com/post/getting-started/</link>
+      <pubDate>Fri, 03 May 2019 09:37:55 +0200</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/06/04/home-prices-r3/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://themichaelskolnik.com/post/getting-started/</guid>
+      <description>&lt;p&gt;Here are some details to help you getting started with this theme.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>My Anaconda R environment</title>
-      <link>https://themichaelskolnik.com/2018/06/03/my-r-environment/</link>
-      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      <title>Portfolio Definition</title>
+      <link>https://themichaelskolnik.com/post/portfolio-definition/</link>
+      <pubDate>Thu, 02 May 2019 19:49:05 +0200</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/06/03/my-r-environment/</guid>
-      <description>Using Jupyter Notebook with R by creating a new environment using Anaconda In this post I want to explain the R environment that I&amp;rsquo;ve created. I use Anaconda (available here) for my Python work, though these steps should be the same with MiniConda. Also, I&amp;rsquo;m doing this on Windows; commands and the look of the terminal prompt will be slightly different on Mac or Linux.
-Creating a new environment You can install the r-essentials package into your current Anaconda by running the following:</description>
+      <guid>https://themichaelskolnik.com/post/portfolio-definition/</guid>
+      <description>&lt;p&gt;Here are some details about the portfolio settings.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;img src=&#34;https://themichaelskolnik.com/post/images/portfolio-example.png&#34;
+         alt=&#34;Example of Portfolio page&#34;/&gt; &lt;figcaption&gt;
+            &lt;p&gt;Example of Portfolio page&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;</description>
     </item>
     
     <item>
-      <title>My R code from two sections of the Level 2 exercises of Kaggle&#39;s Learn Machine Learning series</title>
-      <link>https://themichaelskolnik.com/2018/05/08/home-prices-r2/</link>
-      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      <title>Archetypes management</title>
+      <link>https://themichaelskolnik.com/post/archetypes/</link>
+      <pubDate>Thu, 02 May 2019 19:25:30 +0200</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/05/08/home-prices-r2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://themichaelskolnik.com/post/archetypes/</guid>
+      <description>&lt;p&gt;The archetypes are defined in the &lt;code&gt;archetypes&lt;/code&gt; folder, for both post and portfolio.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>My R code from the Level 1 exercises of Kaggle&#39;s Learn Machine Learning series</title>
-      <link>https://themichaelskolnik.com/2018/04/19/home-prices-r1/</link>
-      <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
+      <title>Shortcodes</title>
+      <link>https://themichaelskolnik.com/post/shortcodes/</link>
+      <pubDate>Mon, 29 Apr 2019 16:18:12 +0100</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/04/19/home-prices-r1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://themichaelskolnik.com/post/shortcodes/</guid>
+      <description>&lt;p&gt;Introduction of the shortcodes defined in the personal-web theme.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>My code from the exercises of Level 2 of Kaggle&#39;s Learn Machine Learning series</title>
-      <link>https://themichaelskolnik.com/2018/04/03/home-prices-python-2/</link>
-      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      <title>Config File</title>
+      <link>https://themichaelskolnik.com/post/config-file/</link>
+      <pubDate>Sat, 20 Apr 2019 16:18:12 +0100</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/04/03/home-prices-python-2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://themichaelskolnik.com/post/config-file/</guid>
+      <description>&lt;p&gt;Here is the basic config file used for personal-web.&lt;/p&gt;
+&lt;p&gt;You can use it as a base for your website.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>My code from the exercises of Level 1 of Kaggle&#39;s Learn Machine Learning series</title>
-      <link>https://themichaelskolnik.com/2018/03/25/home-prices-python/</link>
-      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      <title>Open Graph image</title>
+      <link>https://themichaelskolnik.com/post/define-specific-og-image/</link>
+      <pubDate>Sat, 20 Apr 2019 11:14:59 +0200</pubDate>
       <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/03/25/home-prices-python/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using Python to import multiple Excel files and export as one text file</title>
-      <link>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</link>
-      <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
-      <author>mikeskolnik75@gmail.com (Mike)</author>
-      <guid>https://themichaelskolnik.com/2018/03/12/excel-to-python-to-text/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://themichaelskolnik.com/post/define-specific-og-image/</guid>
+      <description>Within any page, you can add in the FrontMatter a images array that will be used to define a specific Open Graph image.
+For example, see content/_index.md page:</description>
     </item>
     
   </channel>

@@ -1,5 +1,5 @@
 ---
-title: PORTFOLIO
+title: Portfolio
 description: "Portfolio Section"
 ---
 
